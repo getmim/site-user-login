@@ -52,6 +52,10 @@ class LoginController extends \Site\Controller
             $this->res->render('me/login', $params);
             return $this->res->send();
         }
+        
+        $keep = $this->req->getPost('keep');
+        if(!$keep)
+            Cookie::setKeep(false);
 
         Cookie::loginById($user->id);
 
